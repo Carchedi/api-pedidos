@@ -9,8 +9,19 @@ app.use(express.json());
 // COLOCAR O PostgreSQL aqui.
 let orders = [];
 
-app.get("/", (req, res) => {
-  res.send("Primeiro GET funcionando");
+// Listar todos os pedidos
+app.get("/order/list", (req, res) => {
+  res.status(200).send(orders);
+});
+
+// Obter um pedido específico
+app.get("/order/:id", (req, res) => {
+  const { id } = req.params;
+  const order = orders.find((o) => o.numeroPedido === id);
+  if (!order) {
+    return res.status(404).send({ message: "Pedido não encontrado." });
+  }
+  res.status(200).send(order);
 });
 
 // Criar um novo pedido
@@ -20,7 +31,7 @@ app.post("/order", (req, res) => {
   if (!items || !Array.isArray(items) || items.length === 0) {
     return res.status(400).send({
       message:
-        "O campo 'items' é obrigatório e deve ser um array que não pode ser vazio.",
+        "O campo 'items' é obrigatório e deve ser um array com pelo menos um item.",
     });
   }
 
@@ -40,11 +51,6 @@ app.post("/order", (req, res) => {
 
   orders.push(newOrder);
   res.status(201).send(newOrder);
-});
-
-// Listar todos os pedidos
-app.get("/order/list", (req, res) => {
-  res.status(200).send(orders);
 });
 
 app.listen(port, () => {
