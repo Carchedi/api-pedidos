@@ -1,4 +1,5 @@
 const express = require("express");
+const { randomUUID } = require("crypto"); // Importa a função para gerar UUID
 const app = express();
 const port = 3000;
 
@@ -14,21 +15,27 @@ app.get("/", (req, res) => {
 
 // Criar um novo pedido
 app.post("/order", (req, res) => {
-  const { cliente, produto, valor } = req.body;
+  const { items } = req.body;
 
-  if (!cliente || !produto || !valor) {
+  if (!items || !Array.isArray(items) || items.length === 0) {
     return res.status(400).send({
-      message: "Os campos 'cliente', 'produto' e 'valor' são obrigatórios.",
+      message:
+        "O campo 'items' é obrigatório e deve ser um array que não pode ser vazio.",
     });
   }
 
+  const valorTotal = items.reduce((total, item) => {
+    if (item.quantidadeItem == null || item.valorItem == null) {
+      return total;
+    }
+    return total + item.quantidadeItem * item.valorItem;
+  }, 0);
+
   const newOrder = {
-    id: `v${Date.now()}`, // Gerando um ID único simples
-    cliente,
-    produto,
-    valor,
-    entregue: false,
-    timestamp: new Date(),
+    numeroPedido: randomUUID(), // Gera um UUID para o pedido
+    valorTotal: valorTotal,
+    dataCriacao: new Date().toISOString(),
+    items: items,
   };
 
   orders.push(newOrder);
