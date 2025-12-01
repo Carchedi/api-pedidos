@@ -103,12 +103,12 @@ A seguir estão os endpoints disponíveis na API.
       "dataCriacao": "2025-12-01T15:30:00.000Z",
       "items": [
         {
-          "productId": "PROD-001",
+          "productId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
           "quantidadeItem": 2,
           "valorItem": "50.25"
         },
         {
-          "productId": "PROD-002",
+          "productId": "123e4567-e89b-12d3-a456-426655440000",
           "quantidadeItem": 1,
           "valorItem": "50.00"
         }
@@ -132,7 +132,7 @@ A seguir estão os endpoints disponíveis na API.
     "dataCriacao": "2025-12-01T15:30:00.000Z",
     "items": [
       {
-        "productId": "PROD-001",
+        "productId": "123e4567-e89b-12d3-a456-426655440000",
         "quantidadeItem": 2,
         "valorItem": "50.25"
       }
@@ -156,12 +156,12 @@ A seguir estão os endpoints disponíveis na API.
   {
     "items": [
       {
-        "productId": "PROD-003",
+        "productId": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
         "quantidadeItem": 1,
         "valorItem": 75.0
       },
       {
-        "productId": "PROD-004",
+        "productId": "7a1a7f0e-5a6a-4d4e-ae1b-1a2b3c4d5e6f",
         "quantidadeItem": 3,
         "valorItem": 25.5
       }
@@ -181,7 +181,7 @@ A seguir estão os endpoints disponíveis na API.
         "valorItem": 75
       },
       {
-        "productId": "PROD-004",
+        "productId": "7a1a7f0e-5a6a-4d4e-ae1b-1a2b3c4d5e6f",
         "quantidadeItem": 3,
         "valorItem": 25.5
       }
@@ -202,7 +202,7 @@ A seguir estão os endpoints disponíveis na API.
   {
     "items": [
       {
-        "productId": "PROD-005",
+        "productId": "8c3e80b8-c307-4e4e-9b9a-7b7c8d8e9f0a",
         "quantidadeItem": 1,
         "valorItem": 200.0
       }
